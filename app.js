@@ -1,40 +1,23 @@
-var sliderImages = document.querySelectorAll('.slider img');
-var i = 0;
-var interval;
+var slides = document.querySelectorAll('.slide');
+var currentSlide = 0;
+var slideInterval = setInterval(nextSlide, 10000);
 
-function slider() {
-  sliderImages.forEach(function (image, index) {
-    image.style.transform = `translateX(${(index - i) * 100}%)`;
+function updateSlides(newSlide) {
+  slides.forEach((slide, index) => {
+    if (index === newSlide) {
+      slide.classList.add('active');
+    } else {
+      slide.classList.remove('active');
+    }
   });
 }
 
-function nextImage() {
-  if (i < sliderImages.length - 1) {
-    i++;
-  } else {
-    i = 0;
-  }
-  slider();
-  resetAutoSlide();
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  updateSlides(currentSlide);
 }
 
-function prevImage() {
-  if (i > 0) {
-    i--;
-  } else {
-    i = sliderImages.length - 1;
-  }
-  slider();
-  resetAutoSlide();
-}
-
-sliderImages.forEach(function (image, index) {
-  image.style.transform = `translateX(${index * 100}%)`;
-});
-
-interval = setInterval(nextImage, 2000);
-
-function resetAutoSlide() {
-  clearInterval(interval);
-  interval = setInterval(nextImage, 2000);
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  updateSlides(currentSlide);
 }

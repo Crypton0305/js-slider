@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>Responsive Image Carousel</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="slider">
-    <img src="./assets/1.jpg" alt="Image 1">
-    <img src="./assets/2.jpg" alt="Image 2">
-    <img src="./assets/3.jpg" alt="Image 3">
-    <button onclick="prevImage()" class="slider-btn prev">Prev</button>
-    <button onclick="nextImage()" class="slider-btn next">Next</button>
-
-  </div>
-      <script src="./app.js"></script>    
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="slide active">
+                <img src="./assets/1.jpg" /> 
+            </div>
+            <div class="slide">
+                <img src="./assets/2.jpg" />
+            </div>
+            <div class="slide">
+                <img src="./assets/3.jpg" />
+            </div>
+        </div>
+        <div class="buttons">
+            <button onclick="prevSlide()">Previous</button>
+            <button onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
